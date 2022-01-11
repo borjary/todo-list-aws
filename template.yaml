@@ -30,7 +30,7 @@ Resources:
   CreateTodoFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: https://zit8t607n0.execute-api.us-east-1.amazonaws.com/Prod/todos
+      CodeUri: src/
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
       Handler: create.create
       Runtime: python3.7

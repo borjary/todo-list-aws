@@ -9,7 +9,7 @@ Description: >
 Parameters:
   Stage:
     Type: String
-    Default: default
+    Default: staging
     AllowedValues:
       - default
       - staging
@@ -30,7 +30,7 @@ Resources:
   CreateTodoFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: src
+      CodeUri: src/
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
       Handler: create.create
       Runtime: python3.7
@@ -43,7 +43,7 @@ Resources:
   ListTodosFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: src
+      CodeUri: src/
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
       Handler: list.list
       Runtime: python3.7
@@ -56,7 +56,7 @@ Resources:
   GetTodoFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: src
+      CodeUri: src/
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
       Handler: get.get
       Runtime: python3.7
@@ -69,7 +69,7 @@ Resources:
   UpdateTodoFunction:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: src
+      CodeUri: src/
       Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
       Handler: update.update
       Runtime: python3.7

@@ -21,7 +21,7 @@ pipeline {
                 sshagent(['borjaryId']) {
                     sh "git push origin master"
                 }
-
+                exit 0
             }
         }
         stage('Production'){

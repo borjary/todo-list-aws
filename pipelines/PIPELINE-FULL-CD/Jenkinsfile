@@ -20,7 +20,6 @@ pipeline {
                 """, label: "Merging code to master"
                 sshagent(['borjaryId']) {
                     sh "git push origin master"
-                    exit 0
                 }
 
             }

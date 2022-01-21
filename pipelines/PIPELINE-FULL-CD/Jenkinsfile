@@ -13,14 +13,14 @@ pipeline {
             steps{
                 sh script: """
                     set -x
-                    git remote set-url origin https://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@github.com/borjary/todo-list-aws.git
                     git branch -a
                     git checkout -b develop origin/develop
                     git checkout -b master origin/master
                     git merge develop
                 """, label: "Merging code to master"
-                sh "git push origin master"
-                
+                sshagent(['borjaryId']) {
+                    sh "git push origin master"
+                }
             }
         }
         stage('Production'){

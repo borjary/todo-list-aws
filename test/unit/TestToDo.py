@@ -120,24 +120,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_list_todo')
         
-     def test_list_todo_error(self):
-        print ('---------------------')
-        print ('Start: test_list_todo')
-        from src.todoList import put_item
-        from src.todoList import get_items
-
-        # Testing file functions
-        # Table mock
-        responsePut = put_item(self.text, self.dynamodb)
-        idItem = json.loads(responsePut['body'])['id']
-        delete_item(idItem, self.dynamodb)
-        result = get_items(self.dynamodb)
-        print ('Response GetItems' + str(result))
-        self.assertTrue(len(result) == 0)
-        print ('End: test_list_todo_error')
-
-
-    def test_update_todo(self):
+     def test_update_todo(self):
         print ('---------------------')
         print ('Start: test_update_todo')
         from src.todoList import put_item

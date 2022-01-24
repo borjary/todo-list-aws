@@ -18,13 +18,11 @@ def get_table(dynamodb=None):
         dynamodb = boto3.resource("dynamodb")
     # fetch todo from the database
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
-    print(table)
     return table
 
 
 def get_item(key, dynamodb=None):
     table = get_table(dynamodb)
-    print(table)
     try:
         result = table.get_item(
             Key={
@@ -42,7 +40,6 @@ def get_item(key, dynamodb=None):
 
 def get_items(dynamodb=None):
     table = get_table(dynamodb)
-    print(table)
     # fetch todo from the database
     result = table.scan()
     return result['Items']
@@ -50,7 +47,6 @@ def get_items(dynamodb=None):
 
 def put_item(text, dynamodb=None):
     table = get_table(dynamodb)
-    print(table)
     timestamp = str(time.time())
     print('Table name:' + table.name)
     item = {
@@ -60,7 +56,6 @@ def put_item(text, dynamodb=None):
         'createdAt': timestamp,
         'updatedAt': timestamp,
     }
-    print(item)
     try:
         # write the todo to the database
         table.put_item(Item=item)
@@ -78,7 +73,6 @@ def put_item(text, dynamodb=None):
 
 def update_item(key, text, checked, dynamodb=None):
     table = get_table(dynamodb)
-    print(table)
     timestamp = int(time.time() * 1000)
     # update the todo in the database
     try:
@@ -108,7 +102,6 @@ def update_item(key, text, checked, dynamodb=None):
 
 def delete_item(key, dynamodb=None):
     table = get_table(dynamodb)
-    print(table)
     # delete the todo from the database
     try:
         table.delete_item(
@@ -126,7 +119,6 @@ def delete_item(key, dynamodb=None):
 def create_todo_table(dynamodb):
     # For unit testing
     tableName = os.environ['DYNAMODB_TABLE']
-    print(table)
     print('Creating Table with name:' + tableName)
     table = dynamodb.create_table(
         TableName=tableName,

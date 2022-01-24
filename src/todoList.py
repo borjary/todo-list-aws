@@ -30,7 +30,7 @@ def get_item(key, dynamodb=None):
                 'id': key
             }
         )
-        print(result['Item'])
+
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
@@ -150,7 +150,6 @@ def create_todo_table(dynamodb):
     )
 
     # Wait until the table exists.
-    print(table)
     table.meta.client.get_waiter('table_exists').wait(TableName=tableName)
     if (table.table_status != 'ACTIVE'):
         raise AssertionError()

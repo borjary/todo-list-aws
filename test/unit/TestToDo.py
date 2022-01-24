@@ -128,7 +128,8 @@ class TestDatabaseFunctions(unittest.TestCase):
 
         # Testing file functions
         # Table mock
-        put_item(self.text, self.dynamodb)
+        responsePut = put_item(self.text, self.dynamodb)
+        idItem = json.loads(responsePut['body'])['id']
         delete_item(idItem, self.dynamodb)
         result = get_items(self.dynamodb)
         print ('Response GetItems' + str(result))

@@ -44,6 +44,7 @@ def get_items(dynamodb=None):
     print(table)
     # fetch todo from the database
     result = table.scan()
+    print(result['Items'])
     return result['Items']
 
 
@@ -51,6 +52,7 @@ def put_item(text, dynamodb=None):
     table = get_table(dynamodb)
     print(table)
     timestamp = str(time.time())
+    print(timestamp)
     print('Table name:' + table.name)
     item = {
         'id': str(uuid.uuid1()),

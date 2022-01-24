@@ -70,7 +70,7 @@ def put_item(text, dynamodb=None):
             "statusCode": 200,
             "body": json.dumps(item)
         }
-
+        print(response)
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
@@ -117,6 +117,7 @@ def delete_item(key, dynamodb=None):
                 'id': key
             }
         )
+        print("Table deleted: "+table)
 
     except ClientError as e:
         print(e.response['Error']['Message'])

@@ -137,6 +137,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         result = update_item(idItem, updated_text,
                             "false",
                             self.dynamodb)
+        print ('Id' + str(result.id))
         print ('Result Update Item:' + str(result))
         self.assertEqual(result['text'], updated_text)
         print ('End: test_update_todo')

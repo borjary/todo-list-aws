@@ -119,8 +119,9 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertTrue(len(result) == 1)
         self.assertTrue(result[0]['text'] == self.text)
         print ('End: test_list_todo')
-        
-     def test_update_todo(self):
+
+
+    def test_update_todo(self):
         print ('---------------------')
         print ('Start: test_update_todo')
         from src.todoList import put_item

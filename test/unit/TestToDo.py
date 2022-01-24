@@ -129,12 +129,11 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         # Table mock
         put_item(self.text, self.dynamodb)
-        self.table.delete()
+        delete_item(idItem, self.dynamodb)
         result = get_items(self.dynamodb)
         print ('Response GetItems' + str(result))
-        self.assertTrue(len(result) == 1)
-        self.assertTrue(result[0]['text'] == self.text)
-        print ('End: test_list_todo')
+        self.assertTrue(len(result) == 0)
+        print ('End: test_list_todo_error')
 
 
     def test_update_todo(self):

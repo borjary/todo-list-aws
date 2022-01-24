@@ -117,8 +117,7 @@ def delete_item(key, dynamodb=None):
                 'id': key
             }
         )
-        print("Table deleted: "+table)
-
+        
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
@@ -148,6 +147,7 @@ def create_todo_table(dynamodb):
             'WriteCapacityUnits': 1
         }
     )
+    print(table)
 
     # Wait until the table exists.
     table.meta.client.get_waiter('table_exists').wait(TableName=tableName)
